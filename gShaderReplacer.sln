@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGL32", "OpenGL32\OpenGL32.vcxproj", "{C2011696-EFAA-40C1-BC48-570F956B659F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C406DAEC-0886-4771-8DEA-9D7329B46CC1} = {C406DAEC-0886-4771-8DEA-9D7329B46CC1}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tinyxml", "tinyxml\tinyxml_lib.vcxproj", "{C406DAEC-0886-4771-8DEA-9D7329B46CC1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestProgram", "TestProgram\TestProgram.vcxproj", "{D5301710-83C9-48B6-9808-1DC62D22B30A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C2011696-EFAA-40C1-BC48-570F956B659F} = {C2011696-EFAA-40C1-BC48-570F956B659F}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C2011696-EFAA-40C1-BC48-570F956B659F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C2011696-EFAA-40C1-BC48-570F956B659F}.Debug|Win32.Build.0 = Debug|Win32
+		{C2011696-EFAA-40C1-BC48-570F956B659F}.Release|Win32.ActiveCfg = Release|Win32
+		{C2011696-EFAA-40C1-BC48-570F956B659F}.Release|Win32.Build.0 = Release|Win32
+		{C406DAEC-0886-4771-8DEA-9D7329B46CC1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C406DAEC-0886-4771-8DEA-9D7329B46CC1}.Debug|Win32.Build.0 = Debug|Win32
+		{C406DAEC-0886-4771-8DEA-9D7329B46CC1}.Release|Win32.ActiveCfg = Release|Win32
+		{C406DAEC-0886-4771-8DEA-9D7329B46CC1}.Release|Win32.Build.0 = Release|Win32
+		{D5301710-83C9-48B6-9808-1DC62D22B30A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D5301710-83C9-48B6-9808-1DC62D22B30A}.Debug|Win32.Build.0 = Debug|Win32
+		{D5301710-83C9-48B6-9808-1DC62D22B30A}.Release|Win32.ActiveCfg = Release|Win32
+		{D5301710-83C9-48B6-9808-1DC62D22B30A}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

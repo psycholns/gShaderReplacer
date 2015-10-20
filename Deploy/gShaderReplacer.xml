@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<gShaderReplacer DumpAllShaders="1" DumpErrorShaders="1">
+  <!-- last night a dj killed my demoskene http://www.pouet.net/prod.php?which=51758-->
+  <Application Name="picture_1024x768.exe" Name0="picture_1024x768_tga_writer.exe">
+    <StringReplacer Src=".bw" Dst=".zw"/>
+  </Application> 
+
+  <!-- starting grid http://www.pouet.net/prod.php?which=51768 -->
+	<Application Name="rcs_rg.exe">
+		<StringReplacer Src=")|&#9;" Dst=")||&#9;"/>
+		<StringReplacer Src="5|g" Dst="5||g"/>
+		<StringReplacer Src="1|d" Dst="1||d"/>
+		<StringReplacer Src="3&amp;f" Dst="3&amp;&amp;f"/>
+		<StringReplacer Src="1&amp;f" Dst="1&amp;&amp;f"/>
+		<StringReplacer Src="if(o>0.0)&#9;&#9;a+=d" Dst="vec4 ab=a;if(o>0.0)ab+=d"/>
+		<StringReplacer Src="FragColor=a*(t" Dst="FragColor=ab*(t"/>
+	</Application>
+	
+	<!-- crawlspace http://www.pouet.net/prod.php?which=52225 -->
+	<Application Name="crawlspace.exe" Name0="crawlspace_safe.exe">
+		<StringReplacer Src="main(){vec3" Dst="main(){vec4 x=x;vec3"/>
+		<!-- FileReplacer Src="crawlspace_2.glsl" Dst="crawlspace_2f.glsl"/ -->
+	</Application>
+
+	<!-- hil http://www.pouet.net/prod.php?which=53940 -->
+	<!-- running, but still minor errors-->
+	<Application Name="Hil.exe">
+		<StringReplacer Src="ns(t,2)" Dst="ns(vec2(t),2)"/>
+		<StringReplacer Src="mix(c[0].xyz,fn," Dst="mix(c[0].xyz,fn.xyz,"/>		
+	</Application>
+
+  <!-- Objektgeballer 4 http://pouet.net/prod.php?which=54213 -->
+  <!-- still doesn't work - invalid texture assignments in the (native) opengl code -->
+  <Application Name="Objektgeballer4High.exe" Name0="Objektgeballer4Normal.exe" Name1="Objektgeballer4Low.exe">
+    <StringReplacer Src="out vec4 gl_FragColor;" Dst=""/>
+    <StringReplacer Src="texture(posTex" Dst="texture1D(posTex"/>
+    <StringReplacer Src=");&#10;return texture(s, t)" Dst=");&#13;return texture3D(s, t)"/>
+    <StringReplacer Src="0;&#10;return texture(s, t)" Dst="0;&#13;return texture2D(s, t)"/>
+    <StringReplacer Src="texture(vel" Dst="texture2D(vel"/>
+    <StringReplacer Src="texture(pos" Dst="texture2D(pos"/>
+    <_StringReplacer Src="texture(rand, gl_FragCoord.x/tSize*gl_FragCoord.y/tSize)" Dst="texture2D(rand, vec2(gl_FragCoord.x/tSize*gl_FragCoord.y/tSize))"/>
+    <StringReplacer Src="sampler2D rand" Dst="sampler1D rand"/>
+    <StringReplacer Src="texture(rand" Dst="texture1D(rand"/>
+  </Application>
+
+  <!-- Gulièky cestujúce vesmírom http://pouet.net/prod.php?which=54217 -->
+  <Application Name="titan-gulicky4k_1024_768.exe" Name0="titan-gulicky4k_640_480.exe" Name1="titan-gulicky4k_800_600.exe" Name2="titan-gulicky4k_1280_800.exe" Name3="titan-gulicky4k_native.exe">
+    <StringReplacer Src="gl_ModelViewMatrix*vec4(0,1,1,1)" Dst="(gl_ModelViewMatrix*vec4(0,1,1,1)).xyz"/>
+    <StringReplacer Src="gl_ModelViewMatrix*vec4(0,2,-3,1)" Dst="(gl_ModelViewMatrix*vec4(0,2,-3,1)).xyz"/>
+    <StringReplacer Src="ey,di" Dst="vey,vdi"/>
+    <StringReplacer Src="di=vec3(" Dst="vdi=vec3("/>
+    <StringReplacer Src="ey=vec3(" Dst="vey=vec3("/>
+    <StringReplacer Src="))-ey;" Dst="))-vey;"/>
+    <StringReplacer Src="di+=vec3(" Dst="vec3 ey=vey, di=vdi+vec3("/>
+  </Application>
+
+  <!-- Pretentious screw up  http://pouet.net/prod.php?which=54248-->
+  <Application Name="mh_psu.exe">
+    <StringReplacer Src="vec4 n(" Dst="vec3 n("/>
+    <StringReplacer Src="return e;" Dst="return e.xyz;"/>
+  </Application>
+
+	<!-- Heat  http://www.pouet.net/prod.php?which=63376 -->
+	<Application Name="heat_1080.exe" Name0="heat_720.exe">
+		<StringReplacer Src="#define K 60" Dst="#undef K&#10;#define K 60"/>
+	</Application>
+
+	<!-- electrochromacy  http://www.pouet.net/prod.php?which=64153  (note that the last fix changes the function, but probably to the intented behavior) -->
+	<Application Name="electrochromacy_1920x1080.exe">
+		<StringReplacer Src="(b - a) / k" Dst="(b - a).x / k"/>
+		<StringReplacer Src="pyramid_animation)), MATERIAL_ID_CUBE)" Dst="pyramid_animation)), MATERIAL_ID_CUBE).x"/>
+		<StringReplacer Src=";;" Dst=";"/>
+		<StringReplacer Src="float coefficientSum = coefficient" Dst="vec3 coefficientSum = coefficient"/>
+	</Application>
+
+  <!-- source formatting - useful for 4k readability but doesn't work with multiline #defines etc-->
+  <!--
+    <StringReplacer Src=";" Dst=";&#13;&#10;"/>
+	<StringReplacer Src="}" Dst="}&#13;&#10;"/>
+	<StringReplacer Src="{" Dst="&#13;&#10;{"/> 
+  -->
+
+</gShaderReplacer>
